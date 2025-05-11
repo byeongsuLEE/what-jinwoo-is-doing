@@ -20,21 +20,22 @@
         "enabled": true
       },
       {
-        "id": "mysql-main",
+        "id": "mysql",
         "type": "database",
         "provider": "mysql",
-        "connection": {
-          "host": "localhost",
-          "port": 3306,
-          "user": "claude_user",
-          "password": "${MYSQL_PASSWORD}",
-          "database": "claude_data"
-        },
-        "poolSize": 5,
-        "timeout": 10000,
-        "retry": {
-          "attempts": 3,
-          "delay": 1000
+        "command": "uv",
+        "args": [
+          "--directory", 
+          "path/to/mysql_mcp_server",
+          "run",
+          "mysql_mcp_server"
+        ],
+        "env": {
+          "MYSQL_HOST": "jdbc:mysql://evil55.shop:3306/lbs",
+          "MYSQL_PORT": "3306",
+          "MYSQL_USER": "evil55",
+          "MYSQL_PASSWORD": "a980523",
+          "MYSQL_DATABASE": "lbs"
         },
         "enabled": true
       }

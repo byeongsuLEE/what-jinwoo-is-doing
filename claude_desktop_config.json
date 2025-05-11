@@ -1,0 +1,75 @@
+{
+  "app": {
+    "name": "Claude Desktop",
+    "version": "1.5.0"
+  },
+  "mcp": {
+    "enabled": true,
+    "servers": [
+      {
+        "id": "github",
+        "type": "repository",
+        "provider": "github",
+        "connection": {
+          "url": "https://api.github.com",
+          "auth": {
+            "type": "oauth",
+            "token": "${GITHUB_TOKEN}"
+          }
+        },
+        "enabled": true
+      },
+      {
+        "id": "mysql-main",
+        "type": "database",
+        "provider": "mysql",
+        "connection": {
+          "host": "localhost",
+          "port": 3306,
+          "user": "claude_user",
+          "password": "${MYSQL_PASSWORD}",
+          "database": "claude_data"
+        },
+        "poolSize": 5,
+        "timeout": 10000,
+        "retry": {
+          "attempts": 3,
+          "delay": 1000
+        },
+        "enabled": true
+      }
+    ],
+    "logging": {
+      "level": "info",
+      "file": "./logs/mcp.log",
+      "console": true
+    }
+  },
+  "ui": {
+    "theme": "light",
+    "fontSize": "medium",
+    "notifications": {
+      "enabled": true,
+      "sound": true
+    }
+  },
+  "network": {
+    "proxy": {
+      "enabled": false,
+      "host": "",
+      "port": 0,
+      "auth": {
+        "username": "",
+        "password": ""
+      }
+    },
+    "timeout": 30000
+  },
+  "storage": {
+    "path": "./data",
+    "encryption": {
+      "enabled": true,
+      "algorithm": "aes-256-gcm"
+    }
+  }
+}

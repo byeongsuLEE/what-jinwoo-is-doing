@@ -1,0 +1,44 @@
+{
+  "mcp": {
+    "version": "1.0",
+    "servers": {
+      "mysql": {
+        "type": "database",
+        "engine": "mysql",
+        "connection": {
+          "host": "mysql-server.example.com",
+          "port": 3306,
+          "user": "mcp_user",
+          "password": "mcp_password",
+          "database": "mcp_database"
+        },
+        "options": {
+          "poolSize": 10,
+          "connectionTimeout": 5000,
+          "reconnect": true,
+          "keepAlive": true
+        },
+        "security": {
+          "ssl": true,
+          "caCert": "./certs/ca.pem",
+          "clientCert": "./certs/client-cert.pem",
+          "clientKey": "./certs/client-key.pem"
+        }
+      }
+    },
+    "routing": {
+      "database": {
+        "default": "mysql",
+        "read": "mysql",
+        "write": "mysql"
+      }
+    },
+    "health": {
+      "check": {
+        "interval": 30000,
+        "timeout": 5000,
+        "retries": 3
+      }
+    }
+  }
+}
